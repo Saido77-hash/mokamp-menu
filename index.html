@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mokamp Aile Çay Bahçesi - Menü</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f3f0 0%, #e8e4e0 100%);
+            color: #4a4a4a;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(139, 129, 118, 0.15);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #d4c4b0 0%, #b8a693 100%);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="70" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+        
+        .logo {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cafe-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .decorative-line {
+            width: 100px;
+            height: 2px;
+            background: white;
+            margin: 20px auto;
+            opacity: 0.7;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .menu-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #8b8176;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4c4b0, #b8a693);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .menu-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #6d6356;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0ede9;
+            text-transform: capitalize;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f3f0;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            background: #fafaf8;
+            padding-left: 10px;
+            border-radius: 8px;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-weight: 500;
+            color: #4a4a4a;
+            flex: 1;
+        }
+        
+        .item-price {
+            font-weight: 600;
+            color: #8b8176;
+            font-size: 1.1rem;
+        }
+        
+        .food-section {
+            background: linear-gradient(135deg, #f9f7f4 0%, #f0ede9 100%);
+            margin: 0 -40px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        
+        .food-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 40px;
+            background: #f9f7f4;
+            margin: 0 -40px -40px -40px;
+            color: #8b8176;
+            font-size: 0.9rem;
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #8b8176;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(139, 129, 118, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            background: #6d6356;
+            transform: translateY(-2px);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .print-btn {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .cafe-name {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ PDF Olarak Kaydet</button>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1 class="cafe-name">Mokamp Aile Çay Bahçesi</h1>
+                <div class="decorative-line"></div>
+                <p class="subtitle">Menü</p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- İçecekler Bölümü -->
+            <div class="menu-section">
+                <h2 class="section-title">İçecekler</h2>
+                
+                <div class="menu-grid">
+                    <div class="menu-column">
+                        <h3>Sıcak</h3>
+                        <div class="menu-item">
+                            <span class="item-name">Çay</span>
+                            <span class="item-price">20 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Büyük Bardak Çay</span>
+                            <span class="item-price">40 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">K.Bardak Çay</span>
+                            <span class="item-price">40 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Oralet</span>
+                            <span class="item-price">20 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Espresso</span>
+                            <span class="item-price">80 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Doppio (Double Espresso)</span>
+                            <span class="item-price">90 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Americano</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Lungo</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Ristretto</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Esp. Macchiato</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Caffe Latte</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Cappuccino</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Latte Macchiato</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Türk Kahvesi</span>
+                            <span class="item-price">60 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Nescafe</span>
+                            <span class="item-price">50 TL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-column">
+                        <h3>Soğuk</h3>
+                        <div class="menu-item">
+                            <span class="item-name">Ice Americano</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Ice Latte</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Ice Cappuccino</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Meyve Suyu</span>
+                            <span class="item-price">50 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Soğuk Nescafe</span>
+                            <span class="item-price">70 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Kola</span>
+                            <span class="item-price">60 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Fanta</span>
+                            <span class="item-price">60 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Ice Tea</span>
+                            <span class="item-price">60 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Meyveli Soda</span>
+                            <span class="item-price">40 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Sade Soda</span>
+                            <span class="item-price">35 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Gazoz</span>
+                            <span class="item-price">50 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Churchill</span>
+                            <span class="item-price">60 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Limonata</span>
+                            <span class="item-price">50 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Su</span>
+                            <span class="item-price">20 TL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Yiyecekler Bölümü -->
+            <div class="menu-section">
+                <h2 class="section-title">Yiyecekler</h2>
+                <div class="food-section">
+                    <div class="food-grid">
+                        <div class="menu-item">
+                            <span class="item-name">Kaşarlı Tost</span>
+                            <span class="item-price">100 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Karışık Tost</span>
+                            <span class="item-price">120 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Sucuklu Tost</span>
+                            <span class="item-price">120 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Kavurmalı Tost</span>
+                            <span class="item-price">150 TL</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Ev Yapımı Dilim Kek</span>
+                            <span class="item-price">40 TL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Afiyet olsun! • Mokamp Aile Çay Bahçesi</p>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth hover effects
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(5px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+        
+        // Print optimization
+        window.addEventListener('beforeprint', function() {
+            document.body.style.background = 'white';
+        });
+        
+        window.addEventListener('afterprint', function() {
+            document.body.style.background = 'linear-gradient(135deg, #f5f3f0 0%, #e8e4e0 100%)';
+        });
+    </script>
+</body>
+</html>
